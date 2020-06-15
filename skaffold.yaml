@@ -1,0 +1,21 @@
+apiVersion: skaffold/v1beta2
+kind: Config
+build:
+  tagPolicy:
+    sha256: {}
+  local:
+    push: false
+  artifacts:
+    - image: atelierkarin/vue-sample-ssr
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        "**/*.php": .
+        "**/*.js": .
+        "**/*.ts": .
+        "**/*.vue": .
+deploy:
+  kubectl:
+    manifests:
+      - k8s/vue-sample-ssr-deployment.yaml
+      - k8s/vue-sample-ssr-node-port-service.yaml

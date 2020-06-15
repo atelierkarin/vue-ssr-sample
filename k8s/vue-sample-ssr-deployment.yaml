@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vue-sample-ssr-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: vue-sample-ssr
+  template:
+    metadata:
+      labels:
+        component: vue-sample-ssr
+    spec:
+      containers:
+        - name: ssr
+          image: atelierkarin/vue-sample-ssr
+          ports:
+            - containerPort: 8000

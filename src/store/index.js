@@ -3,13 +3,13 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+export function createStore() {
+        return new Vuex.Store({
+                state() {
+                        return {}
+                },
+                mutations: {},
+                actions: {},
+                modules: {}
+        })
+}
